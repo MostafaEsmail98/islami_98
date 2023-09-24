@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/ahadethModel.dart';
+import 'package:islami/detialsAhadeth.dart';
 import 'package:islami/themeData.dart';
 
 class ahadeth extends StatelessWidget {
@@ -37,7 +38,8 @@ class ahadeth extends StatelessWidget {
               },
               itemBuilder: (context, index) {
                 return InkWell(onTap: () {
-
+                  Navigator.pushNamed(context, AhadethDetails.routeName,arguments: ahadethModel(
+                      allAhdeth[index].title, allAhdeth[index].content,));
                 },
                   child: Column(
                     children: [

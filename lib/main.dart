@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/detialsAhadeth.dart';
 import 'package:islami/home.dart';
 import 'package:islami/detialsSura.dart';
 import 'package:islami/themeData.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
         initialRoute: Home.routeName,
         routes: {
           Home.routeName: (context) => Home(),
-         DeSura.routeName:(context) => DeSura()
+         DeSura.routeName:(context) => DeSura(),
+          AhadethDetails.routeName :(context) => AhadethDetails()
         },
         theme:themeData.LightTheme);
   }
