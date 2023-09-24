@@ -4,7 +4,12 @@ import 'package:islami/ahadethModel.dart';
 import 'package:islami/themeData.dart';
 
 class ahadeth extends StatelessWidget {
-List<ahadethModel>allAhdeth=[];
+  List<ahadethModel> allAhdeth = [];
+
+  ahadeth() {
+    loadHadeth();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,26 +25,49 @@ List<ahadethModel>allAhdeth=[];
           thickness: 5,
           color: themeData.color1,
         ),
+        Expanded(
+          child: ListView.separated(
+              separatorBuilder: (context, index) {
+                return Divider(
+                  color: themeData.color1,
+                  thickness: 1,
+                  indent: 30,
+                  endIndent: 30,
+                );
+              },
+              itemBuilder: (context, index) {
+                return InkWell(onTap: () {
+
+                },
+                  child: Column(
+                    children: [
+                      Text(
+                        allAhdeth[index].title,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
+                );
+              },
+              itemCount: allAhdeth.length),
+        )
       ],
     ));
   }
 
   void loadHadeth() {
-    rootBundle
-        .loadString("asset/file/ahadeth.txt")
-        .then((value) {
-         List <String> ahadethList = value.trim().split("#");
-       for (int i  = 0 ; i < ahadethList.length ; i++){
-         String hadethOne = ahadethList[0];
-         List <String>hadethOneLines=hadethOne.split("\n");
-         String title = hadethOneLines[0];
-         hadethOneLines.removeAt(0);
-         List <String> content = hadethOneLines;
-         ahadethModel AhadethModel=ahadethModel(title, content);
-         allAhdeth.add(AhadethModel);
-       }
-    })
-        .catchError((e) {
+    rootBundle.loadString("asset/file/ahadeth.txt").then((value) {
+      List<String> ahadethList = value.split("#");
+      for (int i = 0; i < ahadethList.length; i++) {
+        String hadethOne = ahadethList[i];
+        List<String> hadethOneLines = hadethOne.trim().split("\n");
+        String title = hadethOneLines[0];
+        hadethOneLines.removeAt(0);
+        List<String> content = hadethOneLines;
+        ahadethModel AhadethModel = ahadethModel(title, content);
+        allAhdeth.add(AhadethModel);
+      }
+    }).catchError((e) {
       print(e.toString());
     });
   }
