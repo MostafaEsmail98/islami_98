@@ -18,7 +18,9 @@ class ahadeth extends StatelessWidget {
         Divider(
           thickness: 5,
           color: themeData.color1,
-        ),
+        ),ListView.builder(itemBuilder: (context, index) {
+          return Column();
+        },itemCount: 10,)
 
       ],
     ));
