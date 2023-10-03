@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/themeData.dart';
+import 'package:provider/provider.dart';
 
 class sebha extends StatefulWidget {
   @override
@@ -9,39 +11,51 @@ class sebha extends StatefulWidget {
 
 class _sebhaState extends State<sebha> {
   int counter = 0;
-  int i=0;
-  List<String> tsbeeh =["سبحان الله","الله اكبر","لا اله الا الله","استغفر الله",];
-
+  int i = 0;
+  List<String> tsbeeh = [
+    "سبحان الله",
+    "الله اكبر",
+    "لا اله الا الله",
+    "استغفر الله",
+  ];
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Center(
         child: Column(
       children: [
         SizedBox(
           height: 15,
         ),
-        InkWell(onTap: () {
-          counter++;
-          if (counter==34){
-            counter=0;
-            i++;
-            if (i==tsbeeh.length){
-              i=0;
-            }
-          }
+        InkWell(
+            onTap: () {
+              counter++;
+              if (counter == 34) {
+                counter = 0;
+                i++;
+                if (i == tsbeeh.length) {
+                  i = 0;
+                }
+              }
 
-          setState(() {
-
-          });
-        }, child: Image.asset("asset/image/sebha.png")),
+              setState(() {});
+            },
+            child: Image.asset(pro.mode == ThemeMode.light
+                ? "asset/image/sebha.png"
+                : "asset/image/sebha_dark.png")),
         SizedBox(
           height: 35,
         ),
-        Text("عدد التسبيحات", style: themeData.LightTheme.textTheme.bodyMedium),
+        Text("عدد التسبيحات",
+            style: pro.mode == ThemeMode.light
+                ? themeData.LightTheme.textTheme.bodyMedium
+                : themeData.DarkTheme.textTheme.bodyMedium),
         Container(
           decoration: BoxDecoration(
-              color: Color(0xFFC8B396),
+              color: pro.mode == ThemeMode.light
+                  ? Color(0xFFC8B396)
+                  : Color(0xff141A2E),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           height: 81,
@@ -53,7 +67,7 @@ class _sebhaState extends State<sebha> {
         ),
         Container(
           decoration: BoxDecoration(
-              color: themeData.color1,
+              color: Theme.of(context).colorScheme.primary,
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           height: 51,
@@ -68,5 +82,4 @@ class _sebhaState extends State<sebha> {
       ],
     ));
   }
-
 }

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/ahadethModel.dart';
 import 'package:islami/detialsAhadeth.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/themeData.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class ahadeth extends StatelessWidget {
   List<ahadethModel> allAhdeth = [];
@@ -13,24 +16,25 @@ class ahadeth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Center(
         child: Column(
       children: [
         Image.asset("asset/image/ahadeth_image.png"),
         Divider(
           thickness: 5,
-          color: themeData.color1,
+          color: Theme.of(context).colorScheme.primary,
         ),
-        Text("Ahadeth"),
+        Text(AppLocalizations.of(context)!.ahadeth),
         Divider(
           thickness: 5,
-          color: themeData.color1,
+          color: Theme.of(context).colorScheme.primary,
         ),
         Expanded(
           child: ListView.separated(
               separatorBuilder: (context, index) {
                 return Divider(
-                  color: themeData.color1,
+                  color: Theme.of(context).colorScheme.primary,
                   thickness: 1,
                   indent: 30,
                   endIndent: 30,
