@@ -5,7 +5,10 @@ import 'package:islami/Tabs/quran.dart';
 import 'package:islami/Tabs/radio.dart';
 import 'package:islami/Tabs/sebha.dart';
 import 'package:islami/Tabs/setting.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/themeData.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   static const String routeName = "home";
@@ -17,16 +20,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int index = 0;
 
-
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Stack(
       children: [
-        Image.asset("asset/image/background.png", fit: BoxFit.cover),
+        Image.asset(pro.mode==ThemeMode.light?"asset/image/background.png":"asset/image/bg.png",
+            fit: BoxFit.cover, width: double.infinity),
         Scaffold(
           appBar: AppBar(
-              title:
-                  Text("Islami", style: Theme.of(context).textTheme.bodyLarge)),
+              title: Text(AppLocalizations.of(context)!.appTitle,
+                  style: Theme.of(context).textTheme.bodyLarge)),
           bottomNavigationBar: BottomNavigationBar(
               currentIndex: index,
               onTap: (value) {
@@ -36,24 +40,24 @@ class _HomeState extends State<Home> {
               items: [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/moshaf_blue.png")),
-                    label: "Quran",
-                    backgroundColor: themeData.color1),
+                    label: AppLocalizations.of(context)?.quran,
+                    backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/ahadeth_icon.png")),
-                    label: "Ahadeth",
-                    backgroundColor: themeData.color1),
+                    label: AppLocalizations.of(context)?.ahadeth,
+                    backgroundColor:Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/radio_icon.png")),
-                    label: "Radio",
-                    backgroundColor: themeData.color1),
+                    label: AppLocalizations.of(context)?.radio,
+                    backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/sebha_icon.png")),
-                    label: "Sebha",
-                    backgroundColor: themeData.color1),
+                    label: AppLocalizations.of(context)?.sebha,
+                    backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.settings),
-                    label: "Settings",
-                    backgroundColor: themeData.color1)
+                    label: AppLocalizations.of(context)?.settings,
+                    backgroundColor:Theme.of(context).colorScheme.background)
               ]),
           body: tap[index],
         ),
@@ -61,4 +65,11 @@ class _HomeState extends State<Home> {
     );
   }
 }
-List<Widget>tap=[Quran(),ahadeth(),radio(),sebha(),setting(),];
+
+List<Widget> tap = [
+  Quran(),
+  ahadeth(),
+  radio(),
+  sebha(),
+  setting(),
+];
