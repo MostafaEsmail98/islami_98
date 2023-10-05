@@ -22,8 +22,10 @@ class LanguageSheet extends StatelessWidget {
                 "English",
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: provider.language == "en"
-                        ? themeData.color1
-                        : Colors.black54),
+                        ? Theme.of(context).colorScheme.primary
+                        : provider.mode == ThemeMode.light
+                            ? Colors.black54
+                            : Theme.of(context).colorScheme.onPrimary),
               ),
               Spacer(),
               provider.language == "en"
@@ -44,8 +46,10 @@ class LanguageSheet extends StatelessWidget {
               Text("العربية",
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.language == "ar"
-                          ? themeData.color1
-                          : Colors.black54)),
+                          ? Theme.of(context).colorScheme.primary
+                          : provider.mode == ThemeMode.light
+                          ? Colors.black54
+                          : Theme.of(context).colorScheme.onPrimary)),
               Spacer(),
               provider.language == "ar"
                   ? Icon(

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:islami/themeData.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class sebha extends StatefulWidget {
   @override
@@ -47,7 +48,7 @@ class _sebhaState extends State<sebha> {
         SizedBox(
           height: 35,
         ),
-        Text("عدد التسبيحات",
+        Text(AppLocalizations.of(context)!.tasbehat,
             style: pro.mode == ThemeMode.light
                 ? themeData.LightTheme.textTheme.bodyMedium
                 : themeData.DarkTheme.textTheme.bodyMedium),

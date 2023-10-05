@@ -40,23 +40,23 @@ class _HomeState extends State<Home> {
               items: [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/moshaf_blue.png")),
-                    label: "Quran",
+                    label: AppLocalizations.of(context)?.quran,
                     backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/ahadeth_icon.png")),
-                    label: "Ahadeth",
+                    label: AppLocalizations.of(context)?.ahadeth,
                     backgroundColor:Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/radio_icon.png")),
-                    label: "Radio",
+                    label: AppLocalizations.of(context)?.radio,
                     backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("asset/image/sebha_icon.png")),
-                    label: "Sebha",
+                    label: AppLocalizations.of(context)?.sebha,
                     backgroundColor: Theme.of(context).colorScheme.background),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.settings),
-                    label: "Settings",
+                    label: AppLocalizations.of(context)?.settings,
                     backgroundColor:Theme.of(context).colorScheme.background)
               ]),
           body: tap[index],

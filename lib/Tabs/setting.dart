@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:islami/BottonSheet/Language_Botton_sheet.dart';
 import 'package:islami/BottonSheet/Theme_Botton_Sheet.dart';
 import 'package:islami/providers/my_provider.dart';
-import 'package:islami/themeData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,7 +33,7 @@ class _settingState extends State<setting> {
             width: double.infinity,
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                border: Border.all(width: 1, color: themeData.color1),
+                border: Border.all(width: 1, color:Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -55,7 +54,7 @@ class _settingState extends State<setting> {
             width: double.infinity,
             decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                border: Border.all(width: 1, color: themeData.color1),
+                border: Border.all(width: 1, color: Theme.of(context).colorScheme.primary),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -80,7 +79,7 @@ class _settingState extends State<setting> {
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
           ),
-          borderSide: BorderSide(color: themeData.color1)),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
       context: context,
       builder: (context) {
         return LanguageSheet();
@@ -95,7 +94,7 @@ class _settingState extends State<setting> {
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
           ),
-          borderSide: BorderSide(color: themeData.color1)),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
       context: context,
       builder: (context) {
         return ThemeSheet();

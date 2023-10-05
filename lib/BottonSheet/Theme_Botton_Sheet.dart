@@ -23,14 +23,14 @@ class ThemeSheet extends StatelessWidget {
                 AppLocalizations.of(context)!.light,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: provider.mode==ThemeMode.light
-                        ? themeData.color1
-                        : Colors.black54),
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.onPrimary),
               ),
               Spacer(),
               provider.mode==ThemeMode.light
                   ? Icon(Icons.done,
                   color: provider.mode==ThemeMode.light
-                      ? themeData.color1
+                      ? Theme.of(context).colorScheme.primary
                       : Colors.black54)
                   : SizedBox.shrink(),
             ],
@@ -45,14 +45,14 @@ class ThemeSheet extends StatelessWidget {
               Text(AppLocalizations.of(context)!.dark,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: provider.mode==ThemeMode.dark
-                          ? themeData.color1
+                          ? Theme.of(context).colorScheme.primary
                           : Colors.black54)),
               Spacer(),
               provider.mode==ThemeMode.dark
                   ? Icon(
                 Icons.done,
                 color: provider.mode==ThemeMode.dark
-                    ? themeData.color1
+                    ? Theme.of(context).colorScheme.primary
                     : Colors.black54,
               )
                   : SizedBox.shrink(),

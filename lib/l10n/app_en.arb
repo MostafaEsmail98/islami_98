@@ -5,6 +5,11 @@
   "language": "Languege",
   "theme": "Theme",
   "light":"Light",
-  "dark": "Dark"
+  "dark": "Dark",
+  "quran": "Quran",
+  "radio": "Radio",
+  "sebha": "Sebha",
+  "settings": "Settings",
+  "tasbehat": "Tasbehat Number"
 
 }
